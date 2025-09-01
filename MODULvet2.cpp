@@ -18,6 +18,8 @@ int main()
     multiVet(n, V, W, multi);
     prodEscalar=prodEscalarVet(n, V, W);
     mostraResultados(n, V, W, soma, multi, prodEscalar);
+    if(prodEscalar==0)
+        cout<<"Vetores ORTOGONAIS."<<endl;
     return 0;
 }
 void Tmax(string msg, int &n){
