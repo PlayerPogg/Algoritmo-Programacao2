@@ -11,15 +11,13 @@ int main()
 {
     int n;
     Tmax("Insira o numero maximo dos vetores (1..15): ", n);
-    float V[n], W[n], soma[n]={0}, multi[n]={1}, prodEscalar;
+    float V[n], W[n], soma[n]={0}, multi[n]={1}, prodEscalar=0;
     leitorVets(n, V);
     leitorVets(n, W);
     somaVet(n, V, W, soma);
     multiVet(n, V, W, multi);
     prodEscalar=prodEscalarVet(n, V, W);
     mostraResultados(n, V, W, soma, multi, prodEscalar);
-    if(prodEscalar==0)
-        cout<<"Vetores ORTOGONAIS."<<endl;
     return 0;
 }
 void Tmax(string msg, int &n){
@@ -37,7 +35,7 @@ void multiVet(int n, float V[], float W[], float multi[]){
         multi[i]=V[i]*W[i];
 }
 float prodEscalarVet(int n, float V[], float W[]){
-    float prodEscalar;
+    float prodEscalar=0;
     for(int i=0; i<n; i++)
         prodEscalar+=V[i]*W[i];
     return prodEscalar;
@@ -57,5 +55,8 @@ void mostraResultados(int n, float V[], float W[], float soma[], float multi[], 
         cout<<multi[i]<<endl;
     }
     cout<<"Prod Escalar de V e W:"<<endl;
-    cout<<prodEscalar;
+    if(prodEscalar==0)
+        cout<<"Vetores V e W são ORTOGONAIS."<<endl;
+    else
+        cout<<prodEscalar;
 }
