@@ -129,7 +129,7 @@ void menu(int &n, string vetor[], float matriz[TMAX][TMAX]){
         do{
             cout<<"\nPROTOTIPO DE CALCULADORA GEOGRAFICA."<<endl;
             cout<<"\n------MENU PRINCIPAL------"<<endl;
-            cout<<"1-Informar todas as distancias entre duas cidades vizinhas (admite-se apenas uma aplicacao deste comando por executacao do programa)."<<endl;
+            cout<<"1-Informar todas as distancias entre duas cidades vizinhas."<<endl;
             cout<<"2-Mostras todos os nomes das cidades e todas as respectivas distancias."<<endl;
             cout<<"3-Mostrar a distancia entre duas cidades."<<endl;
             cout<<"4-Calcular e apresentar distancia total de um percurso."<<endl;
@@ -212,7 +212,7 @@ void lerFormarMatrizDistancias(int n, string vetor[], float matriz[TMAX][TMAX]){
     string cidade1, cidade2;
     int auxI1, auxI2;
     float distancia;
-    char resp = 's'; 
+    char resp='s';
     string inputDistancia;
     
     cout<<"As distancias serao requesitadas para cidades vizinhas (portanto, uma distancia entre duas cidades implicara que sao vizinhas e se nao for informado a distancia entre duas cidades, sera tratado como se nao fossem vizinhas)"<<endl;
@@ -220,13 +220,12 @@ void lerFormarMatrizDistancias(int n, string vetor[], float matriz[TMAX][TMAX]){
     do{
         cin.ignore();
         
-        
         do{
             cout<<"Qual o nome da primeira cidade?"<<endl;
             getline(cin, cidade1);
             
-            auxI1=-1; 
             bool achou=false;
+            auxI1=0;
             for(int i=0; i<n; i++){
                 if(toLowerString(vetor[i])==toLowerString(cidade1)){
                     auxI1=i;
@@ -234,21 +233,19 @@ void lerFormarMatrizDistancias(int n, string vetor[], float matriz[TMAX][TMAX]){
                     break; 
                 }
             }
-            if(not achou) {
+            if(not achou){
                 cout<<"Cidade '"<<cidade1<<"' nao encontrada no cadastro. Tente novamente."<<endl;
-            } 
-            else{
+            }else{
                 break;
             }
         }while(true);
-        
-        
+
         do{
             cout<<"E da segunda cidade."<<endl;
             getline(cin, cidade2);
             
-            auxI2=-1; 
             bool achou=false;
+            auxI2=0;
             for(int i=0; i<n; i++){
                 if(toLowerString(vetor[i])==toLowerString(cidade2)){
                     auxI2=i;
@@ -256,31 +253,27 @@ void lerFormarMatrizDistancias(int n, string vetor[], float matriz[TMAX][TMAX]){
                     break;
                 }
             }
-            if(not achou) {
+            if(not achou){
                 cout<<"Cidade '"<<cidade2<<"' nao encontrada no cadastro. Tente novamente."<<endl;
-            } 
-            else{
+            }else{
                 break;
             }
         }while(true);
 
-        
         do{
             cout<<"Qual a distancia entre "<<cidade1<<" e "<<cidade2<<"?"<<endl;
             getline(cin, inputDistancia);
             
-            if(not validarFloat(inputDistancia)) {
+            if(not validarFloat(inputDistancia)){
                 cout<<"Distância inválida. Digite um número real positivo."<<endl;
             }
         }while(not validarFloat(inputDistancia));
         
-        distancia = atof(inputDistancia.c_str());
+        distancia=atof(inputDistancia.c_str());
 
-        
         if(distancia<0){
             cout<<"Distancia invalida. Deve ser maior ou igual a zero."<<endl;
-        }
-        else{
+        }else{
             matriz[auxI1][auxI2]=distancia;
             matriz[auxI2][auxI1]=distancia;
             cout<<"Distancia registrada/atualizada com sucesso!"<<endl;
