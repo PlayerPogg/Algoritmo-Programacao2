@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<stdlib.h>
-#define TMAX 40
+#define TMAX 20
 using namespace std;
 
 
@@ -183,7 +183,7 @@ void lerNcidades(int &n, string vetor[]){
         if (not validarInteiro(inputN)) {
             cout<<"Entrada inválida. Digite um número inteiro positivo."<<endl;
         }
-    } while (not validarInteiro(inputN));
+    } while (not validarInteiro(inputN) or n < 4 or n > TMAX)
 
     n = atoi(inputN.c_str());
 
