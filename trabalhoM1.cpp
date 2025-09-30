@@ -103,6 +103,7 @@ void menu(int &n, string vetor[], float matriz[TMAX][TMAX]){
         lerNcidades(n, vetor);
         
         do{
+            system("cls");
             cout<<"\nPROTOTIPO DE CALCULADORA GEOGRAFICA."<<endl;
             cout<<"\n------MENU PRINCIPAL------"<<endl;
             cout<<"1-Informar todas as distancias entre duas cidades vizinhas."<<endl;
